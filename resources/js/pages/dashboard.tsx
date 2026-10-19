@@ -1,26 +1,71 @@
-import { Head } from '@inertiajs/react';
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
+import { Head, usePage } from '@inertiajs/react';
+import { RecentUsers } from '@/components/dashboard/recent-users';
+import { RoleDistributionChart } from '@/components/dashboard/role-distribution-chart';
+import { SignupsChart } from '@/components/dashboard/signups-chart';
+import { StatsCards } from '@/components/dashboard/stats-cards';
 import { dashboard } from '@/routes';
+import type {
+    Auth,
+    DashboardStats,
+    ManagedUser,
+    PaginatedResource,
+    SignupPoint,
+} from '@/types';
 
-export default function Dashboard() {
+type Props = {
+    stats: DashboardStats;
+    signups: SignupPoint[];
+    recentUsers: Pick<PaginatedResource<ManagedUser>, 'data'>;
+};
+
+function getGreeting(): string {
+    const hour = new Date().getHours();
+
+    if (hour >= 6 && hour < 12) {
+        return 'Good morning';
+    }
+
+    if (hour >= 12 && hour < 18) {
+        return 'Good afternoon';
+    }
+
+    if (hour >= 18 && hour < 21) {
+        return 'Good evening';
+    }
+
+    return 'Good night';
+}
+
+export default function Dashboard({ stats, signups, recentUsers }: Props) {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
     return (
         <>
             <Head title="Dashboard" />
-            <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
+
+            <div className="space-y-4">
+                <div>
+                    <h1 className="text-xl font-semibold tracking-tight md:text-2xl">
+                        {getGreeting()}, {auth.user.name}
+                    </h1>
+                    <p className="text-sm text-muted-foreground">
+                        Here's an overview of your application.
+                    </p>
                 </div>
-                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
-                    <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+
+                <StatsCards stats={stats} />
+
+                <div className="grid gap-4 lg:grid-cols-3">
+                    <div className="lg:col-span-2">
+                        <SignupsChart signups={signups} />
+                    </div>
+                    <RoleDistributionChart stats={stats} />
                 </div>
+
+                <RecentUsers
+                    users={recentUsers.data}
+                    canViewUsers={auth.user.role === 'admin'}
+                />
             </div>
         </>
     );

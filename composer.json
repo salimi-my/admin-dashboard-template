@@ -1,12 +1,19 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/react-starter-kit",
+    "name": "salimi-my/admin-dashboard-template",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A Laravel and Inertia React admin dashboard starter kit with a floating sidebar layout, users datatable, settings, and authentication.",
     "keywords": [
         "laravel",
-        "framework"
+        "inertia",
+        "react",
+        "starter-kit",
+        "admin",
+        "dashboard",
+        "tailwindcss",
+        "shadcn"
     ],
+    "homepage": "https://github.com/salimi-my/admin-dashboard-template",
     "license": "MIT",
     "require": {
         "php": "^8.3",
@@ -48,8 +55,9 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate --force",
-            "npm install",
-            "npm run build"
+            "@php artisan storage:link --force",
+            "pnpm install",
+            "pnpm run build"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -63,8 +71,8 @@
         ],
         "ci:check": [
             "Composer\\Config::disableProcessTimeout",
-            "npm run check",
-            "npm run types:check",
+            "pnpm run check",
+            "pnpm run types:check",
             "@test"
         ],
         "types:check": [
@@ -90,7 +98,8 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
+            "@php artisan migrate --graceful --ansi",
+            "@php artisan storage:link --ansi"
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"

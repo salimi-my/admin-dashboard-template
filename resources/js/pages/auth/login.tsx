@@ -109,6 +109,6 @@ export default function Login({ status, canResetPassword }: Props) {
 }
 
 Login.layout = {
-    title: 'Log in to your account',
+    title: 'Welcome back',
     description: 'Enter your email and password below to log in',
 };
