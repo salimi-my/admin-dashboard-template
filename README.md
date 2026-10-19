@@ -1,4 +1,4 @@
-# Admin Dashboard Template
+# [Admin Dashboard Template](https://github.com/salimi-my/admin-dashboard-template) &middot; [![Author Salimi](https://img.shields.io/badge/Author-Salimi-%3C%3E)](https://www.salimi.my)
 
 A [Laravel](https://laravel.com) + [Inertia](https://inertiajs.com) + React starter kit for admin dashboards. It ships a floating sidebar and header layout, a users datatable with full CRUD, account settings, a dashboard with charts, and polished authentication pages.
 
