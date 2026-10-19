@@ -16,14 +16,14 @@ A [Laravel](https://laravel.com) + [Inertia](https://inertiajs.com) + React star
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Backend | Laravel 13, PHP 8.3+, Fortify |
-| Frontend | Inertia v3, React 19, TypeScript |
-| Styling | Tailwind CSS v4, shadcn/ui |
-| Build | Vite with Vite+ (`vp`) |
-| Database | SQLite by default |
-| Package manager | **pnpm** |
+| Layer           | Technology                       |
+| --------------- | -------------------------------- |
+| Backend         | Laravel 13, PHP 8.3+, Fortify    |
+| Frontend        | Inertia v3, React 19, TypeScript |
+| Styling         | Tailwind CSS v4, shadcn/ui       |
+| Build           | Vite with Vite+ (`vp`)           |
+| Database        | SQLite by default                |
+| Package manager | **pnpm**                         |
 
 ## Requirements
 
@@ -83,10 +83,10 @@ php artisan wayfinder:generate --with-form
 php artisan db:seed
 ```
 
-| Email | Role | Password |
-|---|---|---|
+| Email                 | Role  | Password   |
+| --------------------- | ----- | ---------- |
 | `johndoe@example.com` | Admin | `P@$$w0rd` |
-| `janedoe@example.com` | User | `P@$$w0rd` |
+| `janedoe@example.com` | User  | `P@$$w0rd` |
 
 It also creates 48 random users (password `password`). Change or remove the seeded accounts in `database/seeders/DatabaseSeeder.php` before deploying.
 
@@ -161,15 +161,15 @@ routes/                         web.php and settings.php
 
 ## Scripts
 
-| Command | Purpose |
-|---|---|
-| `composer run dev` | Run the full development environment |
-| `composer test` | Pint check, PHPStan and the Pest suite |
-| `composer lint` | Fix PHP code style with Pint |
-| `composer types:check` | PHPStan analysis |
-| `pnpm run build` | Production frontend build |
-| `pnpm run check:fix` | Format and lint the frontend |
-| `pnpm run types:check` | TypeScript type check |
+| Command                | Purpose                                |
+| ---------------------- | -------------------------------------- |
+| `composer run dev`     | Run the full development environment   |
+| `composer test`        | Pint check, PHPStan and the Pest suite |
+| `composer lint`        | Fix PHP code style with Pint           |
+| `composer types:check` | PHPStan analysis                       |
+| `pnpm run build`       | Production frontend build              |
+| `pnpm run check:fix`   | Format and lint the frontend           |
+| `pnpm run types:check` | TypeScript type check                  |
 
 ## Using AI assistants
 
