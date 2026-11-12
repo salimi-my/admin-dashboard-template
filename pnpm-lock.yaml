@@ -162,6 +162,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    vite:
+      specifier: npm:@voidzero-dev/vite-plus-core@1.3.0
+      version: 1.3.0
+    vite-plus:
+      specifier: 1.3.0
+      version: 1.3.0
+
+overrides:
+  vite@*: npm:@voidzero-dev/vite-plus-core@1.3.0
+
 importers:
 
   .:
@@ -171,10 +183,10 @@ importers:
         version: 3.11.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@inertiajs/vite':
         specifier: ^3.11.0
-        version: 3.11.0(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+        version: 3.11.0(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))
       '@tailwindcss/vite':
         specifier: ^4.3.5
-        version: 4.3.5(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+        version: 4.3.5(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -183,7 +195,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: ^6.3.0
-        version: 6.3.0(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(rolldown@1.2.18)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+        version: 6.3.0(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(rolldown@1.2.18))(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(babel-plugin-react-compiler@1.0.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -204,7 +216,7 @@ importers:
         version: 1.5.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       laravel-vite-plugin:
         specifier: ^3.2.1
-        version: 3.2.1(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+        version: 3.2.1(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))
       lucide-react:
         specifier: ^0.475.0
         version: 0.475.0(react@19.3.1)
@@ -245,15 +257,15 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vite:
-        specifier: ^8.3.8
-        version: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+        specifier: 'catalog:'
+        version: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
     devDependencies:
       '@laravel/vite-plugin-wayfinder':
         specifier: ^0.1.11
         version: 0.1.11
       '@rolldown/plugin-babel':
         specifier: ^0.2.4
-        version: 0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(rolldown@1.2.18)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+        version: 0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(rolldown@1.2.18)
       '@types/node':
         specifier: ^22.20.5
         version: 22.20.5
@@ -264,7 +276,7 @@ importers:
         specifier: ^4.23.0
         version: 4.23.0(supports-color@10.2.2)
       vite-plus:
-        specifier: 1.3.0
+        specifier: 'catalog:'
         version: 1.3.0(@types/node@22.20.5)(@vitest/ui@5.0.5)(jiti@2.7.0)(typescript@5.9.3)
     optionalDependencies:
       '@laravel/multiplex':
@@ -3486,49 +3498,6 @@ packages:
       playwright:
         optional: true
 
-  vite@8.3.8:
-    resolution: {integrity: sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA==}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^20.19.0 || >=22.12.0
-      '@vitejs/devtools': ^0.7.1 || ^0.8.0
-      esbuild: ^0.27.0 || ^0.28.0
-      jiti: '>=1.21.0'
-      less: ^4.0.0
-      sass: ^1.70.0
-      sass-embedded: ^1.70.0
-      stylus: '>=0.54.8'
-      sugarss: ^5.0.0
-      terser: ^5.16.0
-      tsx: ^4.8.1
-      yaml: ^2.4.2
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      '@vitejs/devtools':
-        optional: true
-      esbuild:
-        optional: true
-      jiti:
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-      tsx:
-        optional: true
-      yaml:
-        optional: true
-
   vitest@5.0.5:
     resolution: {integrity: sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg==}
     engines: {node: ^22.12.0 || ^24.0.0 || >=26.0.0}
@@ -3907,13 +3876,13 @@ snapshots:
     transitivePeerDependencies:
       - axios
 
-  '@inertiajs/vite@3.11.0(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))':
+  '@inertiajs/vite@3.11.0(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))':
     dependencies:
       '@inertiajs/core': 3.11.0
       '@jridgewell/remapping': 2.3.5
       magic-string: 0.30.21
       tinyglobby: 0.2.17
-      vite: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+      vite: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
     transitivePeerDependencies:
       - axios
 
@@ -4926,14 +4895,14 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.2.18':
     optional: true
 
-  '@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(rolldown@1.2.18)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))':
+  '@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(rolldown@1.2.18)':
     dependencies:
       '@babel/core': 7.29.13(supports-color@10.2.2)
       picomatch: 4.0.7
       rolldown: 1.2.18
     optionalDependencies:
       '@babel/runtime': 7.29.13
-      vite: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+      vite: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
 
   '@rolldown/pluginutils@1.1.0': {}
 
@@ -5040,12 +5009,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.3.5
       '@tailwindcss/oxide-win32-x64-msvc': 4.3.5
 
-  '@tailwindcss/vite@4.3.5(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))':
+  '@tailwindcss/vite@4.3.5(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))':
     dependencies:
       '@tailwindcss/node': 4.3.5
       '@tailwindcss/oxide': 4.3.5
       tailwindcss: 4.3.5
-      vite: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+      vite: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
 
   '@testing-library/dom@10.4.2':
     dependencies:
@@ -5119,12 +5088,12 @@ snapshots:
 
   '@types/validate-npm-package-name@4.0.2': {}
 
-  '@vitejs/plugin-react@6.3.0(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(rolldown@1.2.18)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))':
+  '@vitejs/plugin-react@6.3.0(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(rolldown@1.2.18))(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(babel-plugin-react-compiler@1.0.0)':
     dependencies:
       '@rolldown/pluginutils': 1.1.0
-      vite: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+      vite: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
     optionalDependencies:
-      '@rolldown/plugin-babel': 0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(rolldown@1.2.18)(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
+      '@rolldown/plugin-babel': 0.2.4(@babel/core@7.29.13(supports-color@10.2.2))(@babel/runtime@7.29.13)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(rolldown@1.2.18)
       babel-plugin-react-compiler: 1.0.0
 
   '@vitest/browser-preview@5.0.5(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3))(vitest@5.0.5)':
@@ -5823,11 +5792,11 @@ snapshots:
     dependencies:
       es-toolkit: 1.53.2
 
-  laravel-vite-plugin@3.2.1(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0)):
+  laravel-vite-plugin@3.2.1(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)):
     dependencies:
       picocolors: 1.1.1
       tinyglobby: 0.2.17
-      vite: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
+      vite: '@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)'
       vite-plugin-full-reload: 1.2.0
 
   libphonenumber-js@1.13.16: {}
@@ -6666,18 +6635,6 @@ snapshots:
       - utf-8-validate
       - vue-tsc
       - yaml
-
-  vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0):
-    dependencies:
-      lightningcss: 1.33.0
-      picomatch: 4.0.7
-      postcss: 8.5.32
-      rolldown: 1.2.18
-      tinyglobby: 0.2.17
-    optionalDependencies:
-      '@types/node': 22.20.5
-      fsevents: 2.3.3
-      jiti: 2.7.0
 
   vitest@5.0.5(@types/node@22.20.5)(@vitest/browser-preview@5.0.5)(@vitest/ui@5.0.5)(@voidzero-dev/vite-plus-core@1.3.0(@types/node@22.20.5)(jiti@2.7.0)(typescript@5.9.3)):
     dependencies:
